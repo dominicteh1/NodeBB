@@ -12,6 +12,7 @@ module.exports = {
 			if (err) {
 				return callback(err);
 			}
+			const currentChatRoomId = 1;
 			async.whilst(
 				(next) => {
 					next(null, currentChatRoomId <= nextChatRoomId);
@@ -24,7 +25,6 @@ module.exports = {
 		});
 
 		function processChatRoom(currentChatRoomId, next) {
-			currentChatRoomId = 1;
 			db.getSortedSetRange(`chat:room:${currentChatRoomId}:uids`, 0, 0, (err, uids) => {
 				if (err) {
 					return next(err);
