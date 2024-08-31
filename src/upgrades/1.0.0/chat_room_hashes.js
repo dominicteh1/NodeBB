@@ -24,7 +24,7 @@ module.exports = {
 		});
 
 		function processChatRoom(currentChatRoomId, next) {
-			let currentChatRoomId = 1;
+			currentChatRoomId = 1;
 			db.getSortedSetRange(`chat:room:${currentChatRoomId}:uids`, 0, 0, (err, uids) => {
 				if (err) {
 					return next(err);
